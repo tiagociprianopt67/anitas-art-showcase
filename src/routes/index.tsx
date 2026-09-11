@@ -88,7 +88,7 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="relative mx-auto mt-[-2vw] flex max-w-4xl items-center justify-center">
+        <div className="relative mx-auto mt-8 flex max-w-4xl items-center justify-center">
           {hero.map((p, i) => (
             <button
               key={p.title}
@@ -112,7 +112,7 @@ function Index() {
           ))}
         </div>
 
-        <h2 className="display-xl mx-auto mt-[6vw] max-w-6xl text-center text-[11vw] leading-[0.86] text-muted-ink">
+        <h2 className="display-xl mx-auto mt-[6vw] max-w-[92rem] text-center text-[8.5vw] leading-[0.88] text-muted-ink">
           Painter, printmaker
           <br />& figure abstractionist
         </h2>
