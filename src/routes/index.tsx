@@ -75,8 +75,8 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="group -mx-4 mt-8 space-y-3 overflow-hidden bg-muted py-6">
-          <div className="flex w-max animate-marquee gap-3 group-hover:[animation-play-state:paused]">
+        <div className="-mx-4 mt-8 space-y-3 overflow-hidden bg-muted py-6">
+          <div className="flex w-max animate-marquee gap-3">
             {[...marqueeRowOne, ...marqueeRowOne].map((p, i) => (
               <button
                 key={`${p.title}-${i}`}
@@ -93,10 +93,7 @@ function Index() {
               </button>
             ))}
           </div>
-          <div
-            className="flex w-max animate-marquee gap-3 group-hover:[animation-play-state:paused]"
-            style={{ animationDuration: "78s" }}
-          >
+          <div className="flex w-max animate-marquee gap-3" style={{ animationDuration: "78s" }}>
             {[...marqueeRowTwo, ...marqueeRowTwo].map((p, i) => (
               <button
                 key={`${p.title}-${i}`}
