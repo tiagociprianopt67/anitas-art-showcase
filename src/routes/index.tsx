@@ -58,6 +58,12 @@ const more: Piece[] = [
   { src: tangerine.url, title: "Tangerine", year: "2024", medium: "Mixed media" },
   { src: donttake.url, title: "Don't Take", year: "2025", medium: "Acrylic & marker" },
   { src: chaos.url, title: "Chaos / Love", year: "2024", medium: "Mixed media" },
+  { src: "/art/freeyourself.jpg", title: "Free Yourself", year: "2025", medium: "Acrylic & marker" },
+  { src: "/art/justpassinthru.jpg", title: "Just Passin' Thru", year: "2025", medium: "Acrylic on canvas" },
+  { src: "/art/sublime.jpg", title: "Sublime", year: "2025", medium: "Spray paint & marker" },
+  { src: "/art/missingsomeone.jpg", title: "Missing Someone", year: "2025", medium: "Mixed media" },
+  { src: "/art/dontfearlove.jpg", title: "Don't Fear Love", year: "2025", medium: "Acrylic & marker" },
+  { src: "/art/sketchbookpage.jpg", title: "Sketchbook Page", year: "2025", medium: "Marker on paper" },
 ];
 
 const rotations = ["-8deg", "5deg", "-4deg", "7deg"];
@@ -76,7 +82,7 @@ function Index() {
       {/* Header */}
       <header className="pt-6 text-center">
         <p className="label-xs">Lisbon, Portugal</p>
-        <p className="label-xs text-muted-ink">studio@anitapereira.art</p>
+        <p className="label-xs text-muted-ink">Anitadom7@gmail.com</p>
       </header>
 
       {/* Hero */}
@@ -176,8 +182,8 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-border py-10 text-center">
         <p className="label-xs">Anita Pereira</p>
-        <a href="mailto:studio@anitapereira.art" className="label-xs text-muted-ink">
-          studio@anitapereira.art
+        <a href="mailto:Anitadom7@gmail.com" className="label-xs text-muted-ink">
+          Anitadom7@gmail.com
         </a>
       </footer>
 
