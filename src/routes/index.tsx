@@ -52,6 +52,9 @@ const more: Piece[] = [
 const marqueeRowOne = more.filter((_, i) => i % 2 === 0);
 const marqueeRowTwo = more.filter((_, i) => i % 2 === 1);
 
+const TILT_CLASSES = ["card-tilt-1", "card-tilt-2", "card-tilt-3", "card-tilt-4"];
+const tiltClass = (i: number) => TILT_CLASSES[i % TILT_CLASSES.length];
+
 function Index() {
   const [active, setActive] = useState<Piece | null>(null);
 
@@ -138,7 +141,7 @@ function Index() {
             <button
               key={p.title}
               onClick={() => setActive(p)}
-              className={`group text-left ${i % 2 === 0 ? "tape" : "tape-alt"}`}
+              className={`group text-left ${i % 2 === 0 ? "tape" : "tape-alt"} ${tiltClass(i)}`}
             >
               <div className="aspect-square overflow-hidden rounded-[1.75rem]">
                 <img
@@ -172,7 +175,7 @@ function Index() {
             <button
               key={`${p.title}-${i}`}
               onClick={() => setActive(p)}
-              className={`group transition-transform duration-300 hover:-translate-y-1 ${i % 2 === 0 ? "tape" : "tape-alt"}`}
+              className={`group ${i % 2 === 0 ? "tape" : "tape-alt"} ${tiltClass(i)}`}
             >
               <div className="aspect-square overflow-hidden rounded-2xl ring-0 ring-ink-accent transition-shadow duration-300 group-hover:ring-[3px]">
                 <img
