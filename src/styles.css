@@ -333,10 +333,10 @@
 
 @utility crown-final-a {
   position: absolute;
-  top: -0.06em;
-  right: -0.2em;
-  width: 0.55em;
-  height: 0.37em;
+  top: -0.1em;
+  right: -0.32em;
+  width: 0.42em;
+  height: 0.28em;
   animation: crown-bounce 1.7s ease-in-out infinite;
 
   @media (prefers-reduced-motion: reduce) {
