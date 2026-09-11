@@ -24,13 +24,6 @@ export const Route = createFileRoute("/")({
 
 type Piece = { src: string; title: string; year: string; medium: string };
 
-const hero: Piece[] = [
-  { src: "/art/iseeitnow.jpg", title: "I See It Now", year: "2025", medium: "Mixed media on canvas" },
-  { src: "/art/theblind.jpg", title: "The Blind Path", year: "2025", medium: "Acrylic & marker on canvas" },
-  { src: "/art/letitgo.jpg", title: "Let It Go", year: "2025", medium: "Acrylic & marker on canvas" },
-  { src: "/art/dissolve.jpg", title: "Dissolve", year: "2024", medium: "Spray paint & acrylic on canvas" },
-];
-
 const featured: Piece[] = [
   { src: "/art/enough.jpg", title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca on canvas" },
   { src: "/art/donttake.jpg", title: "Don't Take", year: "2025", medium: "Acrylic & marker on canvas" },
@@ -56,8 +49,6 @@ const more: Piece[] = [
   { src: "/art/sketchbookpage.jpg", title: "Sketchbook Page", year: "2025", medium: "Marker on paper" },
 ];
 
-const rotations = ["-8deg", "5deg", "-4deg", "7deg"];
-
 function Index() {
   const [active, setActive] = useState<Piece | null>(null);
 
@@ -81,26 +72,24 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="relative mx-auto mt-8 flex max-w-4xl items-center justify-center">
-          {hero.map((p, i) => (
-            <button
-              key={p.title}
-              onClick={() => setActive(p)}
-              style={{
-                transform: `rotate(${rotations[i]})`,
-                marginLeft: i === 0 ? 0 : "-3.5vw",
-                zIndex: i,
-              }}
-              className="aspect-square w-[38vw] max-w-[260px] overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3"
-              aria-label={`View ${p.title}`}
-            >
-              <img
-                src={p.src}
-                alt={`${p.title}, mixed media painting by Anita Pereira`}
-                className="h-full w-full object-cover"
-              />
-            </button>
-          ))}
+        <div className="group relative -mx-4 mt-8 overflow-hidden">
+          <div className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused]">
+            {[...more, ...more].map((p, i) => (
+              <button
+                key={`${p.title}-${i}`}
+                onClick={() => setActive(p)}
+                className="aspect-square w-[46vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[220px]"
+                aria-label={`View ${p.title}`}
+              >
+                <img
+                  src={p.src}
+                  alt={`${p.title}, mixed media painting by Anita Pereira`}
+                  loading={i < more.length ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
         </div>
 
         <h2 className="display-xl mx-auto mt-[6vw] max-w-[92rem] text-center text-[8.5vw] leading-[0.88] text-muted-ink">
