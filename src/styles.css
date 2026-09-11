@@ -314,29 +314,29 @@
 
 @utility skull-hero {
   position: absolute;
-  top: -0.25em;
-  left: -0.42em;
-  width: 0.72em;
-  height: 0.72em;
-  transform: rotate(-9deg);
+  top: -0.08em;
+  left: -0.14em;
+  width: 0.6em;
+  height: 0.6em;
+  transform: rotate(-6deg);
 }
 
 @keyframes crown-bounce {
   0%,
   100% {
-    transform: rotate(-12deg) translateY(0);
+    transform: rotate(24deg) translateY(0);
   }
   50% {
-    transform: rotate(-12deg) translateY(-0.12em);
+    transform: rotate(24deg) translateY(-0.1em);
   }
 }
 
 @utility crown-final-a {
   position: absolute;
-  top: -0.1em;
-  right: -0.32em;
-  width: 0.42em;
-  height: 0.28em;
+  top: 0em;
+  right: 0.08em;
+  width: 0.4em;
+  height: 0.27em;
   animation: crown-bounce 1.7s ease-in-out infinite;
 
   @media (prefers-reduced-motion: reduce) {
