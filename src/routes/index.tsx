@@ -104,8 +104,8 @@ function Index() {
         </div>
 
         <h2 className="display-xl mx-auto mt-[6vw] max-w-[92rem] text-center text-[8.5vw] leading-[0.88] text-muted-ink">
-          Painter, mark-maker
-          <br />& mixed media artist
+          Freestyle painter
+          <br />& raw mark-maker
         </h2>
       </section>
 
