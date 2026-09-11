@@ -146,6 +146,10 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--color-foreground) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--color-foreground) 8%, transparent) 1px, transparent 1px);
+    background-size: 32px 32px;
     color: var(--color-foreground);
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;

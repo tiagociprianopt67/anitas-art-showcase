@@ -62,7 +62,7 @@ function Index() {
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-x-hidden text-foreground">
       {/* Header */}
       <header className="pt-6 text-center">
         <p className="label-xs">Lisbon, Portugal</p>
@@ -75,7 +75,7 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="-mx-4 mt-8 space-y-3 overflow-hidden bg-background py-6">
+        <div className="-mx-4 mt-8 space-y-3 overflow-hidden py-6">
           <div className="flex w-max animate-marquee gap-3">
             {[...marqueeRowOne, ...marqueeRowOne].map((p, i) => (
               <button
