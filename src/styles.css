@@ -312,6 +312,178 @@
   }
 }
 
+.intro-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--color-foreground) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--color-foreground) 8%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: intro-curtain 2.8s ease forwards;
+}
+
+.intro-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.intro-art-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(5.25rem, 14vw, 12rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+  animation: intro-art-splatter 1.9s cubic-bezier(0.16, 0.84, 0.25, 1) forwards;
+}
+
+.intro-art-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-art-card:nth-child(1) { animation-delay: 0.2s; }
+.intro-art-card:nth-child(2) { animation-delay: 0.3s; }
+.intro-art-card:nth-child(3) { animation-delay: 0.24s; }
+.intro-art-card:nth-child(4) { animation-delay: 0.36s; }
+.intro-art-card:nth-child(5) { animation-delay: 0.28s; }
+.intro-art-card:nth-child(6) { animation-delay: 0.34s; }
+
+.intro-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  color: var(--color-foreground);
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 13vw, 11rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: intro-wordmark-settle 2.45s cubic-bezier(0.16, 0.84, 0.25, 1) forwards;
+}
+
+.intro-crowned-a {
+  position: relative;
+  display: inline-block;
+}
+
+.intro-crown {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  width: 0.78em;
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center bottom;
+  animation: intro-crown-land 1.35s cubic-bezier(0.16, 0.84, 0.25, 1) 1.1s forwards;
+}
+
+.intro-skip {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-foreground);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.intro-skip:focus-visible {
+  outline: 2px solid var(--color-ink-accent);
+  outline-offset: 4px;
+}
+
+@keyframes intro-art-splatter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.18) rotate(0deg);
+  }
+  14% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(var(--intro-x), var(--intro-y)) rotate(var(--intro-rotate)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--intro-x), var(--intro-y)) rotate(var(--intro-rotate)) scale(1.08);
+  }
+}
+
+@keyframes intro-wordmark-settle {
+  0% {
+    transform: translate(-50%, -50%) scale(0.34);
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(0.48);
+  }
+  78% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(-19vh) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-19vh) scale(1);
+  }
+}
+
+@keyframes intro-crown-land {
+  0% {
+    opacity: 0;
+    transform: translate(18vw, -42vh) rotate(140deg) scale(0.25);
+  }
+  20% {
+    opacity: 1;
+  }
+  72% {
+    opacity: 1;
+    transform: translate(-50%, -8px) rotate(-6deg) scale(1.04);
+  }
+  86% {
+    transform: translate(-50%, 2px) rotate(4deg) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes intro-curtain {
+  0%,
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-reveal,
+  .intro-art-card,
+  .intro-wordmark,
+  .intro-crown {
+    animation: none;
+  }
+}
+
 @utility skull-hero {
   display: block;
   width: clamp(3.25rem, 8vw, 7rem);

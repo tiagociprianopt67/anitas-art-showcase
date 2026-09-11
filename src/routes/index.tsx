@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,12 +51,54 @@ const more: Piece[] = [
 
 const marqueeRowOne = more.filter((_, i) => i % 2 === 0);
 const marqueeRowTwo = more.filter((_, i) => i % 2 === 1);
+const introPieces = more.slice(0, 6);
+
+const INTRO_CARD_POSITIONS = [
+  { x: "-35vw", y: "-24vh", rotate: "-14deg" },
+  { x: "-8vw", y: "-30vh", rotate: "7deg" },
+  { x: "28vw", y: "-19vh", rotate: "-8deg" },
+  { x: "-30vw", y: "16vh", rotate: "9deg" },
+  { x: "4vw", y: "22vh", rotate: "-6deg" },
+  { x: "35vw", y: "15vh", rotate: "12deg" },
+] as const;
 
 const TILT_CLASSES = ["card-tilt-1", "card-tilt-2", "card-tilt-3", "card-tilt-4"];
 const tiltClass = (i: number) => TILT_CLASSES[i % TILT_CLASSES.length];
 
+function CrownMark({ className }: { className: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 90 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M8 46 L6 20 L24 34 L34 10 L45 30 L56 10 L66 34 L84 20 L82 46 Z"
+        fill="var(--color-background)"
+        stroke="var(--color-foreground)"
+        strokeWidth="5"
+        strokeLinejoin="round"
+      />
+      <circle cx="34" cy="10" r="5" fill="var(--color-ink-accent)" />
+      <circle cx="56" cy="10" r="5" fill="var(--color-ink-accent)" />
+      <line
+        x1="10"
+        y1="46"
+        x2="80"
+        y2="46"
+        stroke="var(--color-foreground)"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function Index() {
   const [active, setActive] = useState<Piece | null>(null);
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
@@ -64,8 +106,74 @@ function Index() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hasSeenIntro = window.sessionStorage.getItem("anita-intro-seen") === "true";
+    const shouldReplayIntro = new URLSearchParams(window.location.search).has("intro");
+
+    if (prefersReducedMotion || (hasSeenIntro && !shouldReplayIntro)) {
+      setShowIntro(false);
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      window.sessionStorage.setItem("anita-intro-seen", "true");
+      setShowIntro(false);
+    }, 2800);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!showIntro) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showIntro]);
+
+  const skipIntro = () => {
+    window.sessionStorage.setItem("anita-intro-seen", "true");
+    setShowIntro(false);
+  };
+
   return (
     <main className="min-h-screen overflow-x-hidden text-foreground">
+      {showIntro && (
+        <div className="intro-reveal" role="dialog" aria-label="Anita Pereira portfolio introduction">
+          <div className="intro-stage" aria-hidden="true">
+            {introPieces.map((piece, index) => {
+              const position = INTRO_CARD_POSITIONS[index];
+              const cardStyle = {
+                "--intro-x": position.x,
+                "--intro-y": position.y,
+                "--intro-rotate": position.rotate,
+              } as CSSProperties;
+
+              return (
+                <div key={piece.src} className="intro-art-card" style={cardStyle}>
+                  <img src={piece.src} alt="" />
+                </div>
+              );
+            })}
+
+            <div className="intro-wordmark">
+              Anita Pereir
+              <span className="intro-crowned-a">
+                a
+                <CrownMark className="intro-crown" />
+              </span>
+            </div>
+          </div>
+          <button type="button" className="intro-skip" onClick={skipIntro}>
+            Skip intro
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <header className="pt-6 text-center">
         <p className="label-xs">Lisbon, Portugal</p>
@@ -114,32 +222,7 @@ function Index() {
               Pereir
               <span className="crowned-final-a">
                 a
-                <svg
-                  className="crown-final-a"
-                  viewBox="0 0 90 50"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M8 46 L6 20 L24 34 L34 10 L45 30 L56 10 L66 34 L84 20 L82 46 Z"
-                    fill="var(--color-background)"
-                    stroke="var(--color-foreground)"
-                    strokeWidth="5"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="34" cy="10" r="5" fill="var(--color-ink-accent)" />
-                  <circle cx="56" cy="10" r="5" fill="var(--color-ink-accent)" />
-                  <line
-                    x1="10"
-                    y1="46"
-                    x2="80"
-                    y2="46"
-                    stroke="var(--color-foreground)"
-                    strokeWidth="5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <CrownMark className="crown-final-a" />
               </span>
             </span>
           </h1>
