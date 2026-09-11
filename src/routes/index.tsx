@@ -66,7 +66,12 @@ function Index() {
       {/* Header */}
       <header className="pt-6 text-center">
         <p className="label-xs">Lisbon, Portugal</p>
-        <p className="label-xs text-muted-ink">Anitadom7@gmail.com</p>
+        <a
+          href="mailto:Anitadom7@gmail.com"
+          className="label-xs text-muted-ink transition-colors hover:text-ink-accent"
+        >
+          Anitadom7@gmail.com
+        </a>
       </header>
 
       {/* Hero */}
@@ -121,13 +126,20 @@ function Index() {
       {/* Featured */}
       <section className="mx-auto mt-16 max-w-6xl px-4 md:mt-32">
         <div className="text-center">
-          <p className="label-xs">Featured Work</p>
+          <p className="label-xs">
+            <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-ink-accent align-middle" />
+            Featured Work
+          </p>
           <p className="label-xs text-muted-ink">Recent pieces from the collection</p>
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {featured.map((p) => (
-            <button key={p.title} onClick={() => setActive(p)} className="group text-left">
+          {featured.map((p, i) => (
+            <button
+              key={p.title}
+              onClick={() => setActive(p)}
+              className={`group text-left ${i % 2 === 0 ? "tape" : "tape-alt"}`}
+            >
               <div className="aspect-square overflow-hidden rounded-[1.75rem]">
                 <img
                   src={p.src}
@@ -136,7 +148,7 @@ function Index() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
               </div>
-              <p className="label-xs mt-3">{p.title}</p>
+              <p className="label-xs mt-3 transition-colors group-hover:text-ink-accent">{p.title}</p>
               <p className="label-xs text-muted-ink">
                 {p.medium} — {p.year}
               </p>
@@ -148,7 +160,10 @@ function Index() {
       {/* More work */}
       <section className="mx-auto mt-32 max-w-6xl px-4 pb-32">
         <div className="text-center">
-          <p className="label-xs">The Collection</p>
+          <p className="label-xs">
+            <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-ink-accent align-middle" />
+            The Collection
+          </p>
           <p className="label-xs text-muted-ink">Take a scroll, stay a while</p>
         </div>
 
@@ -157,14 +172,16 @@ function Index() {
             <button
               key={`${p.title}-${i}`}
               onClick={() => setActive(p)}
-              className="aspect-square overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
+              className={`group transition-transform duration-300 hover:-translate-y-1 ${i % 2 === 0 ? "tape" : "tape-alt"}`}
             >
-              <img
-                src={p.src}
-                alt={`${p.title}, mixed media painting by Anita Pereira`}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
+              <div className="aspect-square overflow-hidden rounded-2xl ring-0 ring-ink-accent transition-shadow duration-300 group-hover:ring-[3px]">
+                <img
+                  src={p.src}
+                  alt={`${p.title}, mixed media painting by Anita Pereira`}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </button>
           ))}
         </div>
@@ -173,7 +190,10 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-border py-10 text-center">
         <p className="label-xs">Anita Pereira</p>
-        <a href="mailto:Anitadom7@gmail.com" className="label-xs text-muted-ink">
+        <a
+          href="mailto:Anitadom7@gmail.com"
+          className="label-xs text-muted-ink transition-colors hover:text-ink-accent"
+        >
           Anitadom7@gmail.com
         </a>
       </footer>

@@ -67,6 +67,7 @@
   --background: oklch(0.985 0.002 90);
   --foreground: oklch(0.24 0.005 90);
   --muted-ink: oklch(0.82 0.004 90);
+  --ink-accent: oklch(0.64 0.22 21);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -137,6 +138,7 @@
 @theme inline {
   --font-display: var(--font-display);
   --color-muted-ink: var(--muted-ink);
+  --color-ink-accent: var(--ink-accent);
 }
 
 @layer base {
@@ -185,5 +187,43 @@
 
   @media (prefers-reduced-motion: reduce) {
     animation-play-state: paused;
+  }
+}
+
+@utility tape {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    width: 4.25rem;
+    height: 1.5rem;
+    background: oklch(0.94 0.02 90 / 0.6);
+    border: 1px solid oklch(0.85 0.01 90 / 0.5);
+    box-shadow: 0 2px 4px oklch(0 0 0 / 0.12);
+    transform: translateX(-50%) rotate(-4deg);
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+@utility tape-alt {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    width: 4.25rem;
+    height: 1.5rem;
+    background: oklch(0.94 0.02 90 / 0.6);
+    border: 1px solid oklch(0.85 0.01 90 / 0.5);
+    box-shadow: 0 2px 4px oklch(0 0 0 / 0.12);
+    transform: translateX(-50%) rotate(3deg);
+    pointer-events: none;
+    z-index: 10;
   }
 }
