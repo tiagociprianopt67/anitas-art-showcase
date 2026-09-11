@@ -80,7 +80,10 @@ function Index() {
       {/* Hero */}
       <section className="px-4">
         <div className="mt-10 text-center">
-          <h1 className="display-xl relative inline-block text-[16vw] leading-[0.98] md:text-[13vw] md:leading-[0.82]">
+          <div
+            className="mx-auto mb-3 flex w-full max-w-[92rem] items-end px-2 md:mb-5 md:px-8"
+            aria-hidden="true"
+          >
             <svg
               className="skull-hero"
               viewBox="0 0 64 64"
@@ -104,35 +107,40 @@ function Index() {
                 strokeLinejoin="round"
               />
             </svg>
-            Anita{" "}
-            <span className="relative inline-block">
-              Pereira
-              <svg
-                className="crown-final-a"
-                viewBox="0 0 90 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M8 46 L6 20 L24 34 L34 10 L45 30 L56 10 L66 34 L84 20 L82 46 Z"
-                  fill="var(--color-background)"
-                  stroke="var(--color-foreground)"
-                  strokeWidth="5"
-                  strokeLinejoin="round"
-                />
-                <circle cx="34" cy="10" r="5" fill="var(--color-ink-accent)" />
-                <circle cx="56" cy="10" r="5" fill="var(--color-ink-accent)" />
-                <line
-                  x1="10"
-                  y1="46"
-                  x2="80"
-                  y2="46"
-                  stroke="var(--color-foreground)"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                />
-              </svg>
+          </div>
+          <h1 className="display-xl mx-auto max-w-[92rem] text-[16vw] leading-[0.98] md:text-[13vw] md:leading-[0.82]">
+            <span className="hero-first-name">Anita</span>{" "}
+            <span className="hero-last-name">
+              Pereir
+              <span className="crowned-final-a">
+                a
+                <svg
+                  className="crown-final-a"
+                  viewBox="0 0 90 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 46 L6 20 L24 34 L34 10 L45 30 L56 10 L66 34 L84 20 L82 46 Z"
+                    fill="var(--color-background)"
+                    stroke="var(--color-foreground)"
+                    strokeWidth="5"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="34" cy="10" r="5" fill="var(--color-ink-accent)" />
+                  <circle cx="56" cy="10" r="5" fill="var(--color-ink-accent)" />
+                  <line
+                    x1="10"
+                    y1="46"
+                    x2="80"
+                    y2="46"
+                    stroke="var(--color-foreground)"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
             </span>
           </h1>
         </div>
