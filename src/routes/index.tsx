@@ -75,7 +75,7 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="-mx-4 mt-8 space-y-3 overflow-hidden bg-muted py-6">
+        <div className="-mx-4 mt-8 space-y-3 overflow-hidden bg-background py-6">
           <div className="flex w-max animate-marquee gap-3">
             {[...marqueeRowOne, ...marqueeRowOne].map((p, i) => (
               <button
