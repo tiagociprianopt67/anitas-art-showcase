@@ -311,3 +311,35 @@
     }
   }
 }
+
+@utility skull-hero {
+  position: absolute;
+  top: -0.25em;
+  left: -0.42em;
+  width: 0.72em;
+  height: 0.72em;
+  transform: rotate(-9deg);
+}
+
+@keyframes crown-bounce {
+  0%,
+  100% {
+    transform: rotate(-12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-12deg) translateY(-0.12em);
+  }
+}
+
+@utility crown-final-a {
+  position: absolute;
+  top: -0.06em;
+  right: -0.2em;
+  width: 0.55em;
+  height: 0.37em;
+  animation: crown-bounce 1.7s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation-play-state: paused;
+  }
+}

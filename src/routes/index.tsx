@@ -79,9 +79,63 @@ function Index() {
 
       {/* Hero */}
       <section className="px-4">
-        <h1 className="display-xl mt-10 text-center text-[16vw] leading-[0.98] md:text-[13vw] md:leading-[0.82]">
-          Anita Pereira
-        </h1>
+        <div className="mt-10 text-center">
+          <h1 className="display-xl relative inline-block text-[16vw] leading-[0.98] md:text-[13vw] md:leading-[0.82]">
+            <svg
+              className="skull-hero"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M32 6 C17 6 9 16 9 28 C9 36 13 41 17 45 L17 53 L26 53 L26 47 L30 47 L30 53 L38 53 L38 47 L42 47 L42 53 L47 53 L47 45 C51 41 55 36 55 28 C55 16 47 6 32 6 Z"
+                fill="var(--color-background)"
+                stroke="var(--color-foreground)"
+                strokeWidth="3.2"
+                strokeLinejoin="round"
+              />
+              <circle cx="23" cy="27" r="5" fill="var(--color-foreground)" />
+              <circle cx="41" cy="27" r="5" fill="var(--color-foreground)" />
+              <path
+                d="M30 32 L28 39 L36 39 L34 32"
+                stroke="var(--color-foreground)"
+                strokeWidth="2.5"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Anita{" "}
+            <span className="relative inline-block">
+              Pereira
+              <svg
+                className="crown-final-a"
+                viewBox="0 0 90 60"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 46 L6 20 L24 34 L34 10 L45 30 L56 10 L66 34 L84 20 L82 46 Z"
+                  fill="var(--color-background)"
+                  stroke="var(--color-foreground)"
+                  strokeWidth="5"
+                  strokeLinejoin="round"
+                />
+                <circle cx="34" cy="10" r="5" fill="var(--color-ink-accent)" />
+                <circle cx="56" cy="10" r="5" fill="var(--color-ink-accent)" />
+                <line
+                  x1="10"
+                  y1="46"
+                  x2="80"
+                  y2="46"
+                  stroke="var(--color-foreground)"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h1>
+        </div>
 
         <div className="-mx-4 mt-8 space-y-3 overflow-hidden py-6">
           <div className="flex w-max animate-marquee gap-3">
