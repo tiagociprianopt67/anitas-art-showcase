@@ -81,7 +81,7 @@ function Index() {
               <button
                 key={`${p.title}-${i}`}
                 onClick={() => setActive(p)}
-                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
+                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
                 aria-label={`View ${p.title}`}
               >
                 <img
@@ -98,7 +98,7 @@ function Index() {
               <button
                 key={`${p.title}-${i}`}
                 onClick={() => setActive(p)}
-                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
+                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
                 aria-label={`View ${p.title}`}
               >
                 <img
