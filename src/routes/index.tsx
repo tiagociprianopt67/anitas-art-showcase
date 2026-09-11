@@ -1,16 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import letitgo from "@/assets/letitgo.jpeg.asset.json";
-import theblind from "@/assets/theblind.jpeg.asset.json";
-import chaos from "@/assets/chaos.jpeg.asset.json";
-import tangerine from "@/assets/tangerine.jpeg.asset.json";
-import dissolve from "@/assets/dissolve.jpeg.asset.json";
-import iseeitnow from "@/assets/iseeitnow.jpeg.asset.json";
-import enough from "@/assets/enough.jpeg.asset.json";
-import collection from "@/assets/collection.jpeg.asset.json";
-import donttake from "@/assets/donttake.jpeg.asset.json";
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -35,29 +25,29 @@ export const Route = createFileRoute("/")({
 type Piece = { src: string; title: string; year: string; medium: string };
 
 const hero: Piece[] = [
-  { src: iseeitnow.url, title: "I See It Now", year: "2025", medium: "Mixed media on canvas" },
-  { src: theblind.url, title: "The Blind Path", year: "2025", medium: "Acrylic & marker on canvas" },
-  { src: letitgo.url, title: "Let It Go", year: "2025", medium: "Acrylic & marker on canvas" },
-  { src: dissolve.url, title: "Dissolve", year: "2024", medium: "Spray paint & acrylic on canvas" },
+  { src: "/art/iseeitnow.jpg", title: "I See It Now", year: "2025", medium: "Mixed media on canvas" },
+  { src: "/art/theblind.jpg", title: "The Blind Path", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: "/art/letitgo.jpg", title: "Let It Go", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: "/art/dissolve.jpg", title: "Dissolve", year: "2024", medium: "Spray paint & acrylic on canvas" },
 ];
 
 const featured: Piece[] = [
-  { src: enough.url, title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca on canvas" },
-  { src: donttake.url, title: "Don't Take", year: "2025", medium: "Acrylic & marker on canvas" },
-  { src: tangerine.url, title: "Tangerine", year: "2024", medium: "Mixed media with found objects" },
-  { src: chaos.url, title: "Chaos / Love", year: "2024", medium: "Mixed media on canvas" },
+  { src: "/art/enough.jpg", title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca on canvas" },
+  { src: "/art/donttake.jpg", title: "Don't Take", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: "/art/tangerine.jpg", title: "Tangerine", year: "2024", medium: "Mixed media with found objects" },
+  { src: "/art/chaos.jpg", title: "Chaos / Love", year: "2024", medium: "Mixed media on canvas" },
 ];
 
 const more: Piece[] = [
-  { src: collection.url, title: "The Collection", year: "2025", medium: "Canvases, studio floor" },
-  { src: letitgo.url, title: "Let It Go", year: "2025", medium: "Acrylic & marker" },
-  { src: theblind.url, title: "The Blind Path", year: "2025", medium: "Acrylic & marker" },
-  { src: iseeitnow.url, title: "I See It Now", year: "2025", medium: "Mixed media" },
-  { src: enough.url, title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca" },
-  { src: dissolve.url, title: "Dissolve", year: "2024", medium: "Spray paint & acrylic" },
-  { src: tangerine.url, title: "Tangerine", year: "2024", medium: "Mixed media" },
-  { src: donttake.url, title: "Don't Take", year: "2025", medium: "Acrylic & marker" },
-  { src: chaos.url, title: "Chaos / Love", year: "2024", medium: "Mixed media" },
+  { src: "/art/collection.jpg", title: "The Collection", year: "2025", medium: "Canvases, studio floor" },
+  { src: "/art/letitgo.jpg", title: "Let It Go", year: "2025", medium: "Acrylic & marker" },
+  { src: "/art/theblind.jpg", title: "The Blind Path", year: "2025", medium: "Acrylic & marker" },
+  { src: "/art/iseeitnow.jpg", title: "I See It Now", year: "2025", medium: "Mixed media" },
+  { src: "/art/enough.jpg", title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca" },
+  { src: "/art/dissolve.jpg", title: "Dissolve", year: "2024", medium: "Spray paint & acrylic" },
+  { src: "/art/tangerine.jpg", title: "Tangerine", year: "2024", medium: "Mixed media" },
+  { src: "/art/donttake.jpg", title: "Don't Take", year: "2025", medium: "Acrylic & marker" },
+  { src: "/art/chaos.jpg", title: "Chaos / Love", year: "2024", medium: "Mixed media" },
   { src: "/art/freeyourself.jpg", title: "Free Yourself", year: "2025", medium: "Acrylic & marker" },
   { src: "/art/justpassinthru.jpg", title: "Just Passin' Thru", year: "2025", medium: "Acrylic on canvas" },
   { src: "/art/sublime.jpg", title: "Sublime", year: "2025", medium: "Spray paint & marker" },
