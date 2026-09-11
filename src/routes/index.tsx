@@ -71,7 +71,7 @@ function Index() {
 
       {/* Hero */}
       <section className="px-4">
-        <h1 className="display-xl mt-10 text-center text-[16vw] leading-[0.82] md:text-[13vw]">
+        <h1 className="display-xl mt-10 text-center text-[16vw] leading-[0.98] md:text-[13vw] md:leading-[0.82]">
           Anita Pereira
         </h1>
 
