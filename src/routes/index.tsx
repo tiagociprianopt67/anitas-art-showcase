@@ -1,31 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import art1 from "@/assets/art-1.jpg";
-import art2 from "@/assets/art-2.jpg";
-import art3 from "@/assets/art-3.jpg";
-import art4 from "@/assets/art-4.jpg";
-import art5 from "@/assets/art-5.jpg";
-import art6 from "@/assets/art-6.jpg";
-import art7 from "@/assets/art-7.jpg";
-import art8 from "@/assets/art-8.jpg";
-import art9 from "@/assets/art-9.jpg";
-import art10 from "@/assets/art-10.jpg";
-import art11 from "@/assets/art-11.jpg";
+import letitgo from "@/assets/letitgo.jpeg.asset.json";
+import theblind from "@/assets/theblind.jpeg.asset.json";
+import chaos from "@/assets/chaos.jpeg.asset.json";
+import tangerine from "@/assets/tangerine.jpeg.asset.json";
+import dissolve from "@/assets/dissolve.jpeg.asset.json";
+import iseeitnow from "@/assets/iseeitnow.jpeg.asset.json";
+import enough from "@/assets/enough.jpeg.asset.json";
+import collection from "@/assets/collection.jpeg.asset.json";
+import donttake from "@/assets/donttake.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Anita Pereira — Abstract Figure Artist" },
+      { title: "Anita Pereira — Mixed Media Artist" },
       {
         name: "description",
         content:
-          "The art collection of Anita Pereira: bold abstract figure paintings, prints and studies.",
+          "The art collection of Anita Pereira: raw, colourful mixed media paintings on canvas.",
       },
-      { property: "og:title", content: "Anita Pereira — Abstract Figure Artist" },
+      { property: "og:title", content: "Anita Pereira — Mixed Media Artist" },
       {
         property: "og:description",
-        content: "Bold abstract figure paintings, prints and studies by Anita Pereira.",
+        content: "Raw, colourful mixed media paintings on canvas by Anita Pereira.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,30 +35,29 @@ export const Route = createFileRoute("/")({
 type Piece = { src: string; title: string; year: string; medium: string };
 
 const hero: Piece[] = [
-  { src: art1, title: "Leap", year: "2025", medium: "Screenprint on paper" },
-  { src: art2, title: "Twin Bloom", year: "2025", medium: "Acrylic on canvas" },
-  { src: art6, title: "Resting Form", year: "2024", medium: "Gouache on board" },
-  { src: art4, title: "Long Wave", year: "2024", medium: "Acrylic on canvas" },
+  { src: iseeitnow.url, title: "I See It Now", year: "2025", medium: "Mixed media on canvas" },
+  { src: theblind.url, title: "The Blind Path", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: letitgo.url, title: "Let It Go", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: dissolve.url, title: "Dissolve", year: "2024", medium: "Spray paint & acrylic on canvas" },
 ];
 
 const featured: Piece[] = [
-  { src: art5, title: "Crowd Study", year: "2025", medium: "Screenprint on paper" },
-  { src: art7, title: "Two Faces", year: "2025", medium: "Ink on paper" },
-  { src: art8, title: "Sprint", year: "2024", medium: "Cut paper collage" },
-  { src: art11, title: "Swimmers", year: "2024", medium: "Gouache on board" },
+  { src: enough.url, title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca on canvas" },
+  { src: donttake.url, title: "Don't Take", year: "2025", medium: "Acrylic & marker on canvas" },
+  { src: tangerine.url, title: "Tangerine", year: "2024", medium: "Mixed media with found objects" },
+  { src: chaos.url, title: "Chaos / Love", year: "2024", medium: "Mixed media on canvas" },
 ];
 
 const more: Piece[] = [
-  { src: art3, title: "Head in Ochre", year: "2025", medium: "Oil on linen" },
-  { src: art9, title: "Soft Orbit", year: "2024", medium: "Watercolour" },
-  { src: art10, title: "Standing Figure", year: "2023", medium: "Screenprint" },
-  { src: art1, title: "Leap II", year: "2025", medium: "Screenprint" },
-  { src: art6, title: "Resting Form", year: "2024", medium: "Gouache" },
-  { src: art2, title: "Twin Bloom", year: "2025", medium: "Acrylic" },
-  { src: art4, title: "Long Wave", year: "2024", medium: "Acrylic" },
-  { src: art11, title: "Swimmers II", year: "2024", medium: "Gouache" },
-  { src: art7, title: "Two Faces", year: "2025", medium: "Ink" },
-  { src: art5, title: "Crowd Study", year: "2025", medium: "Screenprint" },
+  { src: collection.url, title: "The Collection", year: "2025", medium: "Canvases, studio floor" },
+  { src: letitgo.url, title: "Let It Go", year: "2025", medium: "Acrylic & marker" },
+  { src: theblind.url, title: "The Blind Path", year: "2025", medium: "Acrylic & marker" },
+  { src: iseeitnow.url, title: "I See It Now", year: "2025", medium: "Mixed media" },
+  { src: enough.url, title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca" },
+  { src: dissolve.url, title: "Dissolve", year: "2024", medium: "Spray paint & acrylic" },
+  { src: tangerine.url, title: "Tangerine", year: "2024", medium: "Mixed media" },
+  { src: donttake.url, title: "Don't Take", year: "2025", medium: "Acrylic & marker" },
+  { src: chaos.url, title: "Chaos / Love", year: "2024", medium: "Mixed media" },
 ];
 
 const rotations = ["-8deg", "5deg", "-4deg", "7deg"];
@@ -98,14 +95,12 @@ function Index() {
                 marginLeft: i === 0 ? 0 : "-3.5vw",
                 zIndex: i,
               }}
-              className="w-[38vw] max-w-[260px] overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3"
+              className="aspect-square w-[38vw] max-w-[260px] overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3"
               aria-label={`View ${p.title}`}
             >
               <img
                 src={p.src}
-                alt={`${p.title}, abstract figure artwork by Anita Pereira`}
-                width={1024}
-                height={1024}
+                alt={`${p.title}, mixed media painting by Anita Pereira`}
                 className="h-full w-full object-cover"
               />
             </button>
@@ -113,8 +108,8 @@ function Index() {
         </div>
 
         <h2 className="display-xl mx-auto mt-[6vw] max-w-[92rem] text-center text-[8.5vw] leading-[0.88] text-muted-ink">
-          Painter, printmaker
-          <br />& figure abstractionist
+          Painter, mark-maker
+          <br />& mixed media artist
         </h2>
 
         <div className="mt-16 text-center">
@@ -136,14 +131,12 @@ function Index() {
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {featured.map((p) => (
             <button key={p.title} onClick={() => setActive(p)} className="group text-left">
-              <div className="overflow-hidden rounded-[1.75rem]">
+              <div className="aspect-square overflow-hidden rounded-[1.75rem]">
                 <img
                   src={p.src}
-                  alt={`${p.title}, abstract figure artwork by Anita Pereira`}
+                  alt={`${p.title}, mixed media painting by Anita Pereira`}
                   loading="lazy"
-                  width={1024}
-                  height={1024}
-                  className="w-full transition-transform duration-500 group-hover:scale-[1.04]"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
               </div>
               <p className="label-xs mt-3">{p.title}</p>
@@ -167,15 +160,13 @@ function Index() {
             <button
               key={`${p.title}-${i}`}
               onClick={() => setActive(p)}
-              className="overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
+              className="aspect-square overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
             >
               <img
                 src={p.src}
-                alt={`${p.title}, abstract figure artwork by Anita Pereira`}
+                alt={`${p.title}, mixed media painting by Anita Pereira`}
                 loading="lazy"
-                width={1024}
-                height={1024}
-                className="w-full"
+                className="h-full w-full object-cover"
               />
             </button>
           ))}
@@ -198,7 +189,7 @@ function Index() {
         >
           <img
             src={active.src}
-            alt={`${active.title}, abstract figure artwork by Anita Pereira`}
+            alt={`${active.title}, mixed media painting by Anita Pereira`}
             className="max-h-[75vh] w-auto rounded-2xl"
           />
           <div className="text-center">
