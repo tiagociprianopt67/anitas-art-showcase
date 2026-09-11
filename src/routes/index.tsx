@@ -49,6 +49,9 @@ const more: Piece[] = [
   { src: "/art/sketchbookpage.jpg", title: "Sketchbook Page", year: "2025", medium: "Marker on paper" },
 ];
 
+const marqueeRowOne = more.filter((_, i) => i % 2 === 0);
+const marqueeRowTwo = more.filter((_, i) => i % 2 === 1);
+
 function Index() {
   const [active, setActive] = useState<Piece | null>(null);
 
@@ -72,19 +75,39 @@ function Index() {
           Anita Pereira
         </h1>
 
-        <div className="group relative -mx-4 mt-8 overflow-hidden">
-          <div className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused]">
-            {[...more, ...more].map((p, i) => (
+        <div className="group -mx-4 mt-8 space-y-3 overflow-hidden bg-muted py-6">
+          <div className="flex w-max animate-marquee gap-3 group-hover:[animation-play-state:paused]">
+            {[...marqueeRowOne, ...marqueeRowOne].map((p, i) => (
               <button
                 key={`${p.title}-${i}`}
                 onClick={() => setActive(p)}
-                className="aspect-square w-[46vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[220px]"
+                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
                 aria-label={`View ${p.title}`}
               >
                 <img
                   src={p.src}
                   alt={`${p.title}, mixed media painting by Anita Pereira`}
-                  loading={i < more.length ? "eager" : "lazy"}
+                  loading={i < marqueeRowOne.length ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+          <div
+            className="flex w-max animate-marquee gap-3 group-hover:[animation-play-state:paused]"
+            style={{ animationDuration: "78s" }}
+          >
+            {[...marqueeRowTwo, ...marqueeRowTwo].map((p, i) => (
+              <button
+                key={`${p.title}-${i}`}
+                onClick={() => setActive(p)}
+                className="aspect-square w-[38vw] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:-translate-y-3 sm:w-[180px]"
+                aria-label={`View ${p.title}`}
+              >
+                <img
+                  src={p.src}
+                  alt={`${p.title}, mixed media painting by Anita Pereira`}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </button>
@@ -99,7 +122,7 @@ function Index() {
       </section>
 
       {/* Featured */}
-      <section className="mx-auto mt-32 max-w-6xl px-4">
+      <section className="mx-auto mt-16 max-w-6xl px-4 md:mt-32">
         <div className="text-center">
           <p className="label-xs">Featured Work</p>
           <p className="label-xs text-muted-ink">Recent pieces from the collection</p>
