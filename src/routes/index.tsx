@@ -107,14 +107,6 @@ function Index() {
           Painter, mark-maker
           <br />& mixed media artist
         </h2>
-
-        <div className="mt-16 text-center">
-          <p className="label-xs">Shown at</p>
-          <p className="label-xs text-muted-ink">
-            Galeria Zé dos Bois, Fundação Arpad, MAAT Open Studio, Print Club Lisboa,
-            Sé Contemporary
-          </p>
-        </div>
       </section>
 
       {/* Featured */}
