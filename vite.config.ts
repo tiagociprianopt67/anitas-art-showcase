@@ -45,10 +45,12 @@ export default defineConfig(async ({ command, mode }) => {
 
   plugins.push(viteReact());
 
-  const loadedEnv = loadEnv(mode, process.cwd(), "VITE_");
+  const loadedEnv = loadEnv(mode, process.cwd(), "");
   const define: Record<string, string> = {};
   for (const [key, value] of Object.entries(loadedEnv)) {
-    define[`import.meta.env.${key}`] = JSON.stringify(value);
+    if (key.startsWith("VITE_") || key.startsWith("NEXT_PUBLIC_")) {
+      define[`import.meta.env.${key}`] = JSON.stringify(value);
+    }
   }
 
   return {

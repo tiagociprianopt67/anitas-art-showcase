@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { type CSSProperties, useEffect, useState } from "react";
+import { getPublishedArtworks } from "@/functions/artwork";
+import type { Artwork } from "@/lib/artwork";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,16 +24,16 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Piece = { src: string; title: string; year: string; medium: string };
+type Piece = Artwork;
 
-const featured: Piece[] = [
+const staticFeatured: Piece[] = [
   { src: "/art/enough.jpg", title: "Enough Is Enough", year: "2025", medium: "Acrylic & posca on canvas" },
   { src: "/art/donttake.jpg", title: "Don't Take", year: "2025", medium: "Acrylic & marker on canvas" },
   { src: "/art/tangerine.jpg", title: "Tangerine", year: "2024", medium: "Mixed media with found objects" },
   { src: "/art/chaos.jpg", title: "Chaos / Love", year: "2024", medium: "Mixed media on canvas" },
 ];
 
-const more: Piece[] = [
+const staticMore: Piece[] = [
   { src: "/art/collection.jpg", title: "The Collection", year: "2025", medium: "Canvases, studio floor" },
   { src: "/art/letitgo.jpg", title: "Let It Go", year: "2025", medium: "Acrylic & marker" },
   { src: "/art/theblind.jpg", title: "The Blind Path", year: "2025", medium: "Acrylic & marker" },
@@ -49,9 +51,7 @@ const more: Piece[] = [
   { src: "/art/sketchbookpage.jpg", title: "Sketchbook Page", year: "2025", medium: "Marker on paper" },
 ];
 
-const marqueeRowOne = more.filter((_, i) => i % 2 === 0);
-const marqueeRowTwo = more.filter((_, i) => i % 2 === 1);
-const introPieces = more.slice(0, 6);
+const introPieces = staticMore.slice(0, 6);
 
 const INTRO_CARD_POSITIONS = [
   { x: "-35vw", y: "-24vh", rotate: "-14deg" },
@@ -99,11 +99,20 @@ function CrownMark({ className }: { className: string }) {
 function Index() {
   const [active, setActive] = useState<Piece | null>(null);
   const [showIntro, setShowIntro] = useState(true);
+  const [cmsPieces, setCmsPieces] = useState<Piece[]>([]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    void getPublishedArtworks()
+      .then((pieces) => setCmsPieces(pieces))
+      .catch(() => {
+        // The original collection stays visible while the private studio is being set up.
+      });
   }, []);
 
   useEffect(() => {
@@ -139,6 +148,12 @@ function Index() {
     window.sessionStorage.setItem("anita-intro-seen", "true");
     setShowIntro(false);
   };
+
+  const collection = cmsPieces.length > 0 ? [...cmsPieces, ...staticMore] : staticMore;
+  const cmsFeatured = cmsPieces.filter((piece) => piece.featured).slice(0, 4);
+  const featuredPieces = cmsFeatured.length > 0 ? cmsFeatured : staticFeatured;
+  const marqueeRowOne = collection.filter((_, i) => i % 2 === 0);
+  const marqueeRowTwo = collection.filter((_, i) => i % 2 === 1);
 
   return (
     <main className="min-h-screen overflow-x-hidden text-foreground">
@@ -282,7 +297,7 @@ function Index() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {featured.map((p, i) => (
+          {featuredPieces.map((p, i) => (
             <button
               key={p.title}
               onClick={() => setActive(p)}
@@ -316,7 +331,7 @@ function Index() {
         </div>
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-          {more.map((p, i) => (
+          {collection.map((p, i) => (
             <button
               key={`${p.title}-${i}`}
               onClick={() => setActive(p)}
@@ -360,8 +375,18 @@ function Index() {
           <div className="text-center">
             <p className="label-xs">{active.title}</p>
             <p className="label-xs text-muted-ink">
-              {active.medium} — {active.year}
+              {[active.medium, active.year, active.dimensions].filter(Boolean).join(" — ")}
             </p>
+            {active.description && <p className="label-xs mt-2 max-w-md text-muted-ink">{active.description}</p>}
+            {active.availability && (
+              <p className="label-xs mt-2 text-ink-accent">
+                {active.availability === "notForSale"
+                  ? "Not for sale"
+                  : active.availability === "sold"
+                    ? "Sold"
+                    : active.price || "Available"}
+              </p>
+            )}
           </div>
         </div>
       )}
